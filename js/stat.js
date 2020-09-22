@@ -16,12 +16,18 @@ const BAR_WIDTH = 40;
 const MAX_HEIGHT = 150;
 let barHeight = MAX_HEIGHT;
 
-let renderCloud = function (ctx, x, y, color) {
+const randomSaturation = function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-let getMaxElement = function (arr) {
+const getMaxElement = function (arr) {
   let maxElement = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
@@ -56,7 +62,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   ctx.textAlign = `left`;
 
-  let maxTime = getMaxElement(times);
+  const maxTime = getMaxElement(times);
 
   for (let i = 0; i < players.length; i++) {
     barHeight = (barHeight * times[i]) / maxTime;
@@ -68,7 +74,7 @@ window.renderStatistics = function (ctx, players, times) {
     );
 
     if (players[i] !== `Вы`) {
-      ctx.fillStyle = `hsl(235,' + (Math.random() * 100) + '%, ' + (Math.random() * 50) + '%)`;
+      ctx.fillStyle = `hsl(235, ${randomSaturation(1,100)}%, 50%)`;
     } else {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     }
