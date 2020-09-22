@@ -20,7 +20,7 @@ const randomSaturation = function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -74,7 +74,7 @@ window.renderStatistics = function (ctx, players, times) {
     );
 
     if (players[i] !== `Вы`) {
-      ctx.fillStyle = `hsl(235, ${randomSaturation(1,100)}%, 50%)`;
+      ctx.fillStyle = `hsl(235, ${randomSaturation(1, 100)}%, 50%)`;
     } else {
       ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     }
