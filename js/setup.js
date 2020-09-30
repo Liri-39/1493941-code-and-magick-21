@@ -43,19 +43,19 @@ for (let i = 0; i < 4; i++) {
     coatColor: renderWizardCoatColor(),
     eyesColor: renderWizardEyesColor()
   });
-};
+}
 
 userDialog.classList.remove('hidden');
 
-const renderWizard = function (wizards) {
+const renderWizard = function (wizard) {
   const wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards.name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards.coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards.eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
-}
+};
 
 for (let i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
