@@ -5,7 +5,7 @@ const WIZARD_FIRST_NAMES = [`Иван`, `Хуан Себастьян`, `Мари
 const WIZARD_SECOND_NAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
 const WIZARDS_COAT_COLOR = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
 const WIZARDS_EYES_COLOR = [`black`, `red`, `blue`, `yellow`, `green`];
-const PLAYERS = 4;
+const WIZARDS_SIMILAR_COUNT = 4;
 const MIN_NAME_LENGTH = 2;
 const MAX_NAME_LENGTH = 25;
 
@@ -27,7 +27,7 @@ const wizardBody = document.querySelector(`.setup-wizard`);
 const userFieryballColor = document.querySelector(`.setup-fireball-wrap`);
 
 const fragment = document.createDocumentFragment();
-const similarListElement = userDialog.querySelector(`.setup-similar-list`);
+const similarList = userDialog.querySelector(`.setup-similar-list`);
 const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
   .content
   .querySelector(`.setup-similar-item`);
@@ -108,19 +108,7 @@ const closePopup = function () {
   wizardBody.removeEventListener(`click`, onWizardClick);
 };
 
-userNameInput.addEventListener(`input`, function () {
-  let valueLength = userNameInput.value.length;
 
-  if (valueLength < MIN_NAME_LENGTH) {
-    userNameInput.setCustomValidity(`Ещё ${(MIN_NAME_LENGTH - valueLength)} симв.`);
-  } else if (valueLength < MAX_NAME_LENGTH) {
-    userNameInput.setCustomValidity(`Можете ввести еще ${(MAX_NAME_LENGTH - valueLength)} симв.`);
-  } else {
-    userNameInput.setCustomValidity(``);
-  }
-
-  userNameInput.reportValidity();
-});
 
 
 setupOpen.addEventListener(`click`, function () {
@@ -133,7 +121,7 @@ setupOpen.addEventListener(`keydown`, function (evt) {
   }
 });
 
-for (let i = 0; i < PLAYERS; i++) {
+for (let i = 0; i < WIZARDS_SIMILAR_COUNT; i++) {
   wizards.push({
     name: getWizardName(),
     coatColor: getWizardCoatColor(),
@@ -154,6 +142,6 @@ const renderWizard = function (wizard) {
 for (let i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 }
-similarListElement.appendChild(fragment);
+similarList.appendChild(fragment);
 
 userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
