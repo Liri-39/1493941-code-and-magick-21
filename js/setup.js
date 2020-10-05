@@ -6,8 +6,6 @@ const WIZARD_SECOND_NAMES = [`да Марья`, `Верон`, `Мирабелл�
 const WIZARDS_COAT_COLOR = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
 const WIZARDS_EYES_COLOR = [`black`, `red`, `blue`, `yellow`, `green`];
 const WIZARDS_SIMILAR_COUNT = 4;
-const MIN_NAME_LENGTH = 2;
-const MAX_NAME_LENGTH = 25;
 
 const wizards = [];
 
@@ -16,7 +14,6 @@ const setup = document.querySelector(`.setup`);
 const setupClose = setup.querySelector(`.setup-close`);
 
 const userDialog = document.querySelector(`.setup`);
-const userNameInput = userDialog.querySelector(`.setup-user-name`);
 
 const player = document.querySelector(`.setup-player`);
 const userCoatColorInput = player.querySelector(`input[name="coat-color"]`);
@@ -107,9 +104,6 @@ const closePopup = function () {
   userFieryballColor.removeEventListener(`click`, onFieryballClick);
   wizardBody.removeEventListener(`click`, onWizardClick);
 };
-
-
-
 
 setupOpen.addEventListener(`click`, function () {
   openPopup();
